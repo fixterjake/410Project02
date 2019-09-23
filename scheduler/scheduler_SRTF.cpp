@@ -9,3 +9,9 @@
  */
 
 //TODO fill in content
+
+#include "../includes/scheduler_SRTF.h"
+
+void Scheduler_SRTF::sort() {
+
+}
