@@ -44,10 +44,7 @@ bool Scheduler::isEmpty() {
 //true - switch processes
 //false - do not switch
 bool Scheduler::time_to_switch_processes(int tick_count, PCB &p) {
-	if (p.process_number == UNINITIALIZED) {
-		return true;
-	}
-	if (p.remaining_cpu_time == 0 || time_slice == 0) {
+	if (p.process_number == UNINITIALIZED || p.remaining_cpu_time == 0 || time_slice == 0) {
 		return true;
 	}
 	return false;

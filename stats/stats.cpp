@@ -18,6 +18,7 @@ float av_turnaround_time;
 float av_response_time;
 
 Stats::Stats(std::vector<PCB> &finished_vector) {
+	vec = new std::vector<PCB>(finished_vector.size());
 	*vec = finished_vector;
 	calcStats();
 }
@@ -62,8 +63,8 @@ float Stats::get_av_wait_time() {
 //does the work (only needs to run once)
 void Stats::calcStats() {
 	for (PCB pcb : *vec) {
-		av_response_time += pcb.start_time = pcb.arrival_time;
-		av_turnaround_time += pcb.finish_time = pcb.arrival_time;
+		av_response_time += pcb.start_time - pcb.arrival_time;
+		av_turnaround_time += pcb.finish_time - pcb.arrival_time;
 		av_wait_time += pcb.finish_time - pcb.arrival_time - pcb.required_cpu_time;
 	}
 	av_response_time /= vec->size();

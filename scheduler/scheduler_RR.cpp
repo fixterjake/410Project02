@@ -8,11 +8,12 @@
  *      pre-emptive
  */
 
-//TODO fill in content
 
 #include "../includes/scheduler_RR.h"
 
 void Scheduler_RR::sort() {
-
+	for (int i = 0; i < Scheduler::time_slice; i++) {
+		Scheduler::time_slice--;
+	}
 }
 
